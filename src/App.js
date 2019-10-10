@@ -93,6 +93,7 @@ class App extends Component {
                         style={{maxWidth: "100%"}}
                         onClick={this.handleRemoveClick}
                         src={card.image_uris.normal}
+                        alt="card in trades"
                       />
 
                       <p
@@ -132,6 +133,7 @@ class App extends Component {
                         style={{maxWidth: "100%"}}
                         onClick={this.handleAddClick}
                         src={card.image_uris.normal}
+                        alt="card in search"
                       />
                     </Grid.Column>
                   ))
