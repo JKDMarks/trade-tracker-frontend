@@ -1,0 +1,22 @@
+.img-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.text-on-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.center-horiz {
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
