@@ -14,9 +14,17 @@
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+  font-family: Beleren;
 }
 
 .center-horiz {
   left: 50%;
   transform: translate(-50%, 0%);
+}
+
+@font-face {
+  font-family: 'Beleren';
+  src: local('Beleren'),
+    url('/fonts/Beleren/Beleren.ttf') format('truetype'),
+    url('/fonts/Beleren/Beleren.woff') format('woff');
 }
