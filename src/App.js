@@ -134,7 +134,7 @@ class App extends Component {
             <h3><u>Trade Away</u></h3>
               {
                 this.state.tradeAwayCards.length > 0 ? (
-                  <Grid columns={Math.floor(window.innerWidth / 150)}>
+                  <Grid columns={Math.floor(window.innerWidth / 250)}>
                       {
                         this.state.tradeAwayCards.map(card => (
                           <Grid.Column
@@ -167,7 +167,7 @@ class App extends Component {
             <h3><u>Trade For</u></h3>
               {
                 this.state.tradeForCards.length > 0 ? (
-                  <Grid columns={Math.floor(window.innerWidth / 150)}>
+                  <Grid columns={Math.floor(window.innerWidth / 250)}>
                       {
                         this.state.tradeForCards.map(card => (
                           <Grid.Column
