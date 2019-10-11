@@ -28,3 +28,9 @@
     url('/fonts/Beleren/Beleren.ttf') format('truetype'),
     url('/fonts/Beleren/Beleren.woff') format('woff');
 }
+
+.icon.inbox-out {
+  background: url('/outbox.svg');
+  height: 30px;
+  width: 30px;
+}
