@@ -17,7 +17,7 @@ class App extends Component {
       .then(r => r.json())
       .then(json => {
         if (json.data) {
-          this.setState({ searchCards: json.data })
+          this.setState({ searchCards: json.data.slice(0, 50) })
         }
       })
   }
