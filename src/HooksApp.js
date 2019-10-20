@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { Form, Grid, Image, Label } from 'semantic-ui-react'
-
+import { useCards } from './useCustom'
 
 function HooksApp() {
   const [query, setQuery] = useState('')
   const [url, setUrl] = useState(`https://api.scryfall.com/cards/search?q=${query} -is:funny game:paper&unique=prints`)
   const [searchCards, setSearchCards] = useState([])
+
+  const [tradeAwayCards, addToTradeAway, removeFromTradeAway] = useCards([])
+  const [tradeForCards, addToTradeFor, removeFromTradeFor] = useCards([])
 
   useEffect(() => {
     async function fetchCards() {
@@ -40,23 +43,23 @@ function HooksApp() {
             <Grid centered columns={Math.floor(window.innerWidth / 250)}>
                 {
                   searchCards.map(card => (
-                    <Grid.Column key={card.id} id={card.id} style={{maxWidth: "250px"}}>
+                    <Grid.Column className="has-id" key={card.id} id={card.id} style={{maxWidth: "250px"}}>
                       <Image
                         style={{maxWidth: "100%"}}
-                        label={null/*
+                        label={
                           <Fragment>
                             <Label
-                              onClick={this.handleTradeAwayClick}
+                              onClick={e => addToTradeAway(e.target.closest(".has-id").id)}
                               corner='left' as='a' color='red' size='huge'
                               icon={<img src="/outbox.png" alt="outbox" style={{maxHeight: "100%", maxWidth: "100%"}}/>}
                             />
                             <Label
-                              onClick={this.handleTradeForClick}
+                              onClick={e => addToTradeFor(e.target.closest(".has-id").id)}
                               corner='right' as='a' color='red' size='huge'
                               icon={<img src="/inbox.png" alt="inbox" style={{float: "right", maxHeight: "100%", maxWidth: "100%"}}/>}
                             />
                           </Fragment>
-                        */}
+                        }
                         src={card.image_uris ? card.image_uris.normal : card.card_faces[0].image_uris.normal}
                         alt="card in search"
                       />
