@@ -36,7 +36,7 @@ function HooksApp() {
                       {
                         tradeAwayCards.map(card => (
                           <Grid.Column
-                            onClick={e => removeFromTradeAway(e.target.closest(".has-id").id)}
+                            onClick={e => removeFromTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
                             className="img-container has-id"
                             key={card.id} id={card.id}
                             style={{maxWidth: "150px"}}
@@ -69,7 +69,7 @@ function HooksApp() {
                       {
                         tradeForCards.map(card => (
                           <Grid.Column
-                            onClick={e => removeFromTradeFor(e.target.closest(".has-id").id)}
+                            onClick={e => removeFromTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
                             className="img-container has-id"
                             key={card.id} id={card.id}
                             style={{maxWidth: "150px"}}

@@ -28,8 +28,10 @@ export function useCards() {
 
   const removeCard = cardToRemove => {
     const cardIdx = findCardIdx(cardToRemove)
+    const cardCopy = { ...cards[cardIdx] }
+    cardCopy.quantity -= 1
 
-    if (cardToRemove.quantity === 1) {
+    if (cardCopy.quantity === 0) {
       setCards([
         ...cards.slice(0, cardIdx),
         ...cards.slice(cardIdx + 1)
@@ -37,13 +39,12 @@ export function useCards() {
     } else {
       setCards([
         ...cards.slice(0, cardIdx),
-        { ...cardToRemove, quantity: cardToRemove.quantity - 1 },
+        cardCopy,
         ...cards.slice(cardIdx + 1)
       ])
     }
   }
-
-  console.log(cards)
+  
 
   return [cards, addCard, removeCard]
 }
