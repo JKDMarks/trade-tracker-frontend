@@ -33,32 +33,26 @@ function App() {
 
       <Grid columns={2} relaxed='very'>
         <Grid.Column centered>
-          <h3><u>Trade Away</u></h3>
-
           {
-            tradeAwayCards.length > 0 ? (
-              <TradeCardsContainer
-                tradeCards={tradeAwayCards}
-                removeFrom={
-                  e => removeFromTradeAway(e.target.closest(".has-id").id)
-                }
-              />
-            ) : (null)
+            <TradeCardsContainer
+              title={"Trade Away"}
+              tradeCards={tradeAwayCards}
+              removeFrom={
+                e => removeFromTradeAway(e.target.closest(".has-id").id)
+              }
+            />
           }
         </Grid.Column>
 
         <Grid.Column centered>
-          <h3><u>Trade For</u></h3>
-
           {
-            tradeForCards.length > 0 ? (
-              <TradeCardsContainer
-                tradeCards={tradeForCards}
-                removeFrom={
-                  e => removeFromTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])
-                }
-              />
-            ) : (null)
+            <TradeCardsContainer
+              title={"Trade For"}
+              tradeCards={tradeForCards}
+              removeFrom={
+                e => removeFromTradeFor(e.target.closest(".has-id").id)
+              }
+            />
           }
         </Grid.Column>
       </Grid>
