@@ -27,42 +27,47 @@ function App() {
   }, [url])
 
   return (
-    <div className="App" style={{textAlign: "center"}}>
+    <div className="App" style={{textAlign: "center", margin: "10px"}}>
       <h1><u>Trade Tracker</u></h1>
 
-        <Grid columns={2} relaxed='very'>
-          <Grid.Column centered>
-            <h3><u>Trade Away</u></h3>
 
-            {
-              tradeAwayCards.length > 0 ? (
-                <TradeCardsContainer
-                  tradeCards={tradeAwayCards}
-                  removeFrom={
-                    e => removeFromTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])
-                  }
-                />
-              ) : (null)
-            }
-          </Grid.Column>
+      <Grid columns={2} relaxed='very'>
+        <Grid.Column centered>
+          <h3><u>Trade Away</u></h3>
 
-          <Grid.Column centered>
-            <h3><u>Trade For</u></h3>
+          {
+            tradeAwayCards.length > 0 ? (
+              <TradeCardsContainer
+                tradeCards={tradeAwayCards}
+                removeFrom={
+                  e => removeFromTradeAway(e.target.closest(".has-id").id)
+                }
+              />
+            ) : (null)
+          }
+        </Grid.Column>
 
-            {
-              tradeForCards.length > 0 ? (
-                <TradeCardsContainer
-                  tradeCards={tradeForCards}
-                  removeFrom={
-                    e => removeFromTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])
-                  }
-                />
-              ) : (null)
-            }
-          </Grid.Column>
-        </Grid>
+        <Grid.Column centered>
+          <h3><u>Trade For</u></h3>
 
-      <Form onSubmit={() => setUrl(`https://api.scryfall.com/cards/search?q=${query} -is:funny game:paper&unique=prints`)} className="center-horiz" style={{maxWidth: "50%"}}>
+          {
+            tradeForCards.length > 0 ? (
+              <TradeCardsContainer
+                tradeCards={tradeForCards}
+                removeFrom={
+                  e => removeFromTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])
+                }
+              />
+            ) : (null)
+          }
+        </Grid.Column>
+      </Grid>
+
+
+      <Form
+        onSubmit={() => setUrl(`https://api.scryfall.com/cards/search?q=${query} -is:funny game:paper&unique=prints`)}
+        className="center-horiz" style={{maxWidth: "50%", margin: "10px"}}
+      >
         <Form.Input
           label="Card Name"
           value={query}
@@ -73,6 +78,7 @@ function App() {
           Search
         </Form.Button>
       </Form>
+
 
       {
         searchCards.length > 0 ? (

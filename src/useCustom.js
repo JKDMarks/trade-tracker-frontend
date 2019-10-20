@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 export function useCards() {
   const [cards, setCards] = useState([])
 
-  const findCardIdx = findCard => cards.findIndex(card => card.id === findCard.id)
+  const findCardIdx = cardId => cards.findIndex(card => card.id === cardId)
 
-
+  // addCard ACCEPTS A CARD OBJECT THAT SHOULD BE ADDED
   const addCard = cardToAdd => {
-    const cardIdx = findCardIdx(cardToAdd)
+    const cardIdx = findCardIdx(cardToAdd.id)
 
     if (cardIdx === -1) {
       // IF cardToAdd IS NOT YET IN cards
@@ -25,9 +25,9 @@ export function useCards() {
     }
   }
 
-
-  const removeCard = cardToRemove => {
-    const cardIdx = findCardIdx(cardToRemove)
+  // removeCard ACCEPTS A CARD ID, IN CASE CARD IS NO LONGER IN CURRENT SEARCH
+  const removeCard = cardId => {
+    const cardIdx = findCardIdx(cardId)
     const cardCopy = { ...cards[cardIdx] }
     cardCopy.quantity -= 1
 
@@ -44,7 +44,7 @@ export function useCards() {
       ])
     }
   }
-  
+
 
   return [cards, addCard, removeCard]
 }
