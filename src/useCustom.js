@@ -3,33 +3,31 @@ import React, { useState } from 'react'
 export function useCards() {
   const [cards, setCards] = useState([])
 
+  const findCardIdx = findCard => cards.findIndex(card => card.id === findCard.id)
 
-  const findCardIdx = cardId => cards.findIndex(card => card.id === cardId)
 
-
-  const addCard = cardId => {
-    const cardIdx = findCardIdx(cardId)
-    const cardToAdd = {...cards[cardIdx]}
+  const addCard = cardToAdd => {
+    const cardIdx = findCardIdx(cardToAdd)
 
     if (cardIdx === -1) {
       // IF cardToAdd IS NOT YET IN cards
-      cardToAdd.quantity = 1
-
-      setCards([ ...cards, cardToAdd ])
+      setCards([ ...cards, { ...cardToAdd, quantity: 1 } ])
     } else {
       // IF cardToAdd IS ALREADY IN cards
+      const cardCopy = { ...cards[cardIdx] }
+      cardCopy.quantity += 1
+
       setCards([
         ...cards.slice(0, cardIdx),
-        { ...cardToAdd, quantity: cardToAdd.quantity + 1 },
+        cardCopy,
         ...cards.slice(cardIdx + 1)
       ])
     }
   }
 
 
-  const removeCard = cardId => {
-    const cardIdx = findCardIdx(cardId)
-    const cardToRemove = {...cards[cardIdx]}
+  const removeCard = cardToRemove => {
+    const cardIdx = findCardIdx(cardToRemove)
 
     if (cardToRemove.quantity === 1) {
       setCards([
