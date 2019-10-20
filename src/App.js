@@ -80,7 +80,7 @@ function App() {
             <Grid centered columns={Math.floor(window.innerWidth / 250)}>
                 {
                   searchCards.map(card => (
-                    <Grid.Column className="has-id" key={card.id} id={card.id} style={{maxWidth: "250px"}}>
+                    <Grid.Column className="has-id img-container" key={card.id} id={card.id} style={{maxWidth: "250px"}}>
                       <Image
                         style={{maxWidth: "100%"}}
                         label={
@@ -100,6 +100,10 @@ function App() {
                         src={card.image_uris ? card.image_uris.normal : card.card_faces[0].image_uris.normal}
                         alt="card in search"
                       />
+
+                      <p className="text-on-img" style={{fontSize: "25px", maxWidth: "100%", textAlign: "center"}}>
+                        {card.set_name.toUpperCase()}
+                      </p>
                     </Grid.Column>
                   ))
                 }
