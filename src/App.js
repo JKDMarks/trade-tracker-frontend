@@ -92,8 +92,8 @@ function App() {
                       {
                         card.prices.usd_foil &&
                         <Card card={card} isFoil={true}
-                          onOutboxClick={e => addToTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
-                          onInboxClick={e => addToTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
+                          onOutboxClick={e => addToTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)], true)}
+                          onInboxClick={e => addToTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)], true)}
                         />
                       }
                     </Fragment>

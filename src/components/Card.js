@@ -32,7 +32,7 @@ function Card({ card, onOutboxClick, onInboxClick, isFoil }) {
 
       {
         isFoil &&
-        <img className="text-on-img" src="./foil-effect.png" style={{maxHeight: "93%", maxWidth: "93%"}}/>
+        <img className="text-on-img" src="./foil-effect.png" style={{maxHeight: "93%", maxWidth: "93%", filter: "contrast(1.25)"}}/>
       }
     </Grid.Column>
   )

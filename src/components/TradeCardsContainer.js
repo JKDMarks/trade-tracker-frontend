@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 
 function TradeCardsContainer({ title, tradeCards, removeFrom }) {
   const tradeTotal = tradeCards.reduce((total, card) => {
-  	const newTotal = Number(total) + Number(card.prices.usd)
+  	const newTotal = Number(total) + (Number(card.price) * Number(card.quantity))
 
   	return newTotal.toFixed(2)
   }, 0)
