@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Grid, Image, Label } from 'semantic-ui-react'
 
-function Card({ card, onOutboxClick, onInboxClick }: props) {
+function Card({ card, onOutboxClick, onInboxClick, isFoil }) {
   return (
     <Grid.Column className="has-id img-container" key={card.id} id={card.id} style={{maxWidth: "250px"}}>
       <Image
@@ -25,8 +25,15 @@ function Card({ card, onOutboxClick, onInboxClick }: props) {
       />
 
       <p className="text-on-img" style={{fontSize: "25px", maxWidth: "100%", textAlign: "center"}}>
+        {`$${isFoil ? card.prices.usd_foil : card.prices.usd}`}
+        <br/>
         {card.set_name.toUpperCase()}
       </p>
+
+      {
+        isFoil &&
+        <img className="text-on-img" src="./foil-effect.png" style={{maxHeight: "93%", maxWidth: "93%"}}/>
+      }
     </Grid.Column>
   )
 }

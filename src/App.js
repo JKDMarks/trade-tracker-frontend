@@ -81,10 +81,22 @@ function App() {
             <Grid centered columns={Math.floor(window.innerWidth / 250)}>
                 {
                   searchCards.map(card => (
-                    <Card card={card}
-                      onOutboxClick={e => addToTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
-                      onInboxClick={e => addToTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
-                    />
+                    <Fragment>
+                      {
+                        card.prices.usd &&
+                        <Card card={card}
+                          onOutboxClick={e => addToTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
+                          onInboxClick={e => addToTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
+                        />
+                      }
+                      {
+                        card.prices.usd_foil &&
+                        <Card card={card} isFoil={true}
+                          onOutboxClick={e => addToTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
+                          onInboxClick={e => addToTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
+                        />
+                      }
+                    </Fragment>
                   ))
                 }
             </Grid>
