@@ -4,6 +4,7 @@ import { useCards } from './useCustom'
 import './App.css'
 
 import TradeCardsContainer from './components/TradeCardsContainer'
+import Card from './components/Card'
 
 function App() {
   const [query, setQuery] = useState('')
@@ -80,31 +81,10 @@ function App() {
             <Grid centered columns={Math.floor(window.innerWidth / 250)}>
                 {
                   searchCards.map(card => (
-                    <Grid.Column className="has-id img-container" key={card.id} id={card.id} style={{maxWidth: "250px"}}>
-                      <Image
-                        style={{maxWidth: "100%"}}
-                        label={
-                          <Fragment>
-                            <Label
-                              onClick={e => addToTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
-                              corner='left' as='a' color='red' size='huge'
-                              icon={<img src="/outbox.png" alt="outbox" style={{maxHeight: "100%", maxWidth: "100%"}}/>}
-                            />
-                            <Label
-                              onClick={e => addToTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
-                              corner='right' as='a' color='red' size='huge'
-                              icon={<img src="/inbox.png" alt="inbox" style={{float: "right", maxHeight: "100%", maxWidth: "100%"}}/>}
-                            />
-                          </Fragment>
-                        }
-                        src={card.image_uris ? card.image_uris.normal : card.card_faces[0].image_uris.normal}
-                        alt="card in search"
-                      />
-
-                      <p className="text-on-img" style={{fontSize: "25px", maxWidth: "100%", textAlign: "center"}}>
-                        {card.set_name.toUpperCase()}
-                      </p>
-                    </Grid.Column>
+                    <Card card={card}
+                      onOutboxClick={e => addToTradeAway(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
+                      onInboxClick={e => addToTradeFor(searchCards[findCardIdx(e.target.closest(".has-id").id)])}
+                    />
                   ))
                 }
             </Grid>
