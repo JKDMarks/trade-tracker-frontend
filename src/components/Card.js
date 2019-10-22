@@ -27,12 +27,19 @@ function Card({ card, onOutboxClick, onInboxClick, isFoil }) {
       <p className="text-on-img" style={{fontSize: "25px", maxWidth: "100%", textAlign: "center"}}>
         {`$${isFoil ? card.prices.usd_foil : card.prices.usd}`}
         <br/>
+        {
+          isFoil &&
+          <Fragment>
+            FOIL
+            <br/>
+          </Fragment>
+        }
         {card.set_name.toUpperCase()}
       </p>
 
       {
         isFoil &&
-        <img className="text-on-img" src="./foil-effect.png" style={{maxHeight: "93%", maxWidth: "93%", filter: "contrast(1.25)"}}/>
+        <img className="text-on-img" src="./foil-effect.png" alt="foil effect" style={{maxHeight: "93%", maxWidth: "93%", filter: "contrast(1.25)"}}/>
       }
     </Grid.Column>
   )
