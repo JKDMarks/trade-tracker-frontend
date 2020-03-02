@@ -2,4 +2,4 @@
 
 An app for trading cards and tracking the price chance of the cards you traded for/away over time. (<i>WIP!</i>)
 
-mtgtrade.herokuapp.com (For best experience, view on mobile!)
+<b>mtgtrade.herokuapp.com</b> (For best experience, view on mobile!)
